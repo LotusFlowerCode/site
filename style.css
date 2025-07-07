@@ -1,0 +1,153 @@
+/* style.css */
+
+/* — VARIÁVEIS — */
+:root {
+    --glass-bg: rgba(255, 255, 255, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --text-color: #fff;
+    --bg-color: #00b199d3;
+    --accent: #ffffff;
+}
+
+/* — RESET BÁSICO — */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #00a8db;
+    background-image: url("https://www.transparenttextures.com/patterns/arches.png");
+
+    font-family: 'Segoe UI', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+/* — CONTAINER CENTRALIZADO 50% — */
+.container {
+    width: 90%;
+    /* responsivo até 50% no desktop */
+    max-width: 900px;
+}
+
+/* — ESTRUTURA DO VIDRO — */
+.glass-container {
+    position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform .3s;
+}
+
+.glass-container:hover {
+    transform: scale(1.02);
+}
+
+.glass-filter {
+    position: absolute;
+    inset: 0;
+    filter: url(#lg-dist);
+    backdrop-filter: blur(0px);
+    z-index: 0;
+}
+
+.glass-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--glass-bg);
+    z-index: 1;
+}
+
+.glass-specular {
+    position: absolute;
+    inset: 0;
+    box-shadow:
+        inset 1px 1px 0 var(--glass-border),
+        inset 0 0 20px var(--glass-border);
+    z-index: 2;
+}
+
+.glass-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+.glass-container--rounded {
+    border-radius: 1rem;
+}
+
+/* — LAYOUTS INTERNOS — */
+.glass-content.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.box-img img {
+    width: 150px;
+    height: 150px;
+    border-radius: .75rem;
+    object-fit: cover;
+}
+
+.box-text h2,
+.glass-content h2 {
+    font-size: 1.8rem;
+    margin-bottom: .75rem;
+    color: var(--accent);
+}
+
+.box-text p,
+.item p,
+.glass-content ul {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.item img {
+    width: 80px;
+    height: 80px;
+    border-radius: .5rem;
+    object-fit: cover;
+}
+
+.glass-content ul {
+    list-style: disc inside;
+}
+
+/* — SVG FILTER — */
+svg[style] {
+    display: none;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+}
+
+a:hover {
+    box-shadow: inset 0 -2px 0 var(--accent);
+}
+
+.fa-solid {
+    color: white;
+    /* ou var(--text-color) */
+    margin-right: 16px;
+}
